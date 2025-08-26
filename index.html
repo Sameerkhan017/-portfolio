@@ -7,73 +7,103 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="favicon.ico">
   <style>
-    .fade-in { opacity: 0; animation: fadeIn 1s forwards; }
+    /* Animations */
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .typing { overflow: hidden; white-space: nowrap; border-right: .15em solid orange; animation: typing 3s steps(40, end) forwards; }
+    .fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
     @keyframes fadeIn { to { opacity: 1; } }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-  <!-- Header -->
-  <header class="bg-white shadow-md py-8 fade-in">
-    <div class="container mx-auto text-center">
-      <h1 class="text-5xl font-bold">J. Sameer Khan</h1>
-      <p class="text-xl mt-2 text-gray-600">Entrepreneur | Business Director | Innovator</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <a href="https://linkedin.com/in/your-linkedin" class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">LinkedIn</a>
-        <a href="https://your-portfolio.com" class="bg-orange-500 text-white px-4 py-2 rounded shadow hover:bg-orange-600 transition">Portfolio</a>
-        <a href="mailto:your-email@example.com" class="bg-red-600 text-white px-4 py-2 rounded shadow hover:bg-red-700 transition">Email</a>
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white shadow z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold">J. Sameer Khan</h1>
+      <div class="space-x-6">
+        <a href="#about" class="hover:text-orange-500 transition">About</a>
+        <a href="#projects" class="hover:text-orange-500 transition">Projects</a>
+        <a href="#contact" class="hover:text-orange-500 transition">Contact</a>
       </div>
     </div>
-  </header>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 text-white">
+    <h2 class="text-5xl font-bold mb-4 fade-in">Hi, I'm J. Sameer Khan</h2>
+    <p class="text-2xl mb-6 typing">Entrepreneur. Innovator. Director.</p>
+    <a href="#projects" class="bg-white text-orange-500 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Explore My Ventures</a>
+  </section>
 
   <!-- About Section -->
-  <section class="container mx-auto mt-12 px-4 fade-in">
-    <h2 class="text-4xl font-semibold mb-4">About Me</h2>
-    <p>I’m passionate about creating and scaling businesses, leading innovative projects, and driving growth across industries. I specialize in strategic planning, team leadership, and turning ideas into impactful ventures.</p>
+  <section id="about" class="container mx-auto mt-20 px-6 fade-in">
+    <h2 class="text-4xl font-semibold mb-6 text-center">About Me</h2>
+    <p class="text-lg text-center max-w-3xl mx-auto">
+      I’m passionate about creating and scaling businesses, leading innovative projects, and driving growth across industries. I specialize in strategic planning, team leadership, and turning ideas into impactful ventures.
+    </p>
   </section>
 
   <!-- Expertise Section -->
-  <section class="container mx-auto mt-12 px-4 fade-in">
-    <h2 class="text-4xl font-semibold mb-4">Areas of Expertise</h2>
-    <ul class="list-disc list-inside space-y-1">
-      <li>Entrepreneurship & Startups: Business ideation, fundraising, market strategy</li>
-      <li>Leadership & Management: Team building, operations management, strategic decision-making</li>
-      <li>Business Development: Partnerships, growth strategies, networking</li>
-      <li>Marketing & Branding: Digital marketing, brand positioning, PR</li>
-      <li>Project Direction: Managing creative and operational projects from concept to execution</li>
-    </ul>
+  <section class="container mx-auto mt-16 px-6 fade-in">
+    <h2 class="text-4xl font-semibold mb-6 text-center">Areas of Expertise</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="bg-white p-6 rounded-lg shadow text-center card-hover transition">
+        <h3 class="text-2xl font-bold mb-2">Entrepreneurship & Startups</h3>
+        <p>Business ideation, fundraising, and market strategy for innovative ventures.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow text-center card-hover transition">
+        <h3 class="text-2xl font-bold mb-2">Leadership & Management</h3>
+        <p>Team building, operations management, and strategic decision-making.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow text-center card-hover transition">
+        <h3 class="text-2xl font-bold mb-2">Marketing & Business Development</h3>
+        <p>Partnerships, growth strategies, digital marketing, and brand positioning.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Projects Section -->
-  <section class="container mx-auto mt-12 px-4 fade-in">
-    <h2 class="text-4xl font-semibold mb-6">Featured Projects & Ventures</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Project 1 -->
-      <div class="bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition transform">
-        <h3 class="text-2xl font-bold">Health-Based App <span class="text-yellow-500">(In Progress)</span></h3>
-        <p class="mt-2">An innovative health subscription app that will simplify healthcare access, provide personalized health plans, and connect users with medical professionals efficiently.</p>
+  <section id="projects" class="container mx-auto mt-16 px-6 fade-in">
+    <h2 class="text-4xl font-semibold mb-8 text-center">Featured Projects & Ventures</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow card-hover transition relative overflow-hidden">
+        <h3 class="text-2xl font-bold mb-2">Health-Based App <span class="text-yellow-500 font-semibold">(In Progress)</span></h3>
+        <p>An innovative health subscription app that will simplify healthcare access, provide personalized health plans, and connect users with medical professionals efficiently.</p>
       </div>
-      <!-- Project 2 -->
-      <div class="bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition transform">
-        <h3 class="text-2xl font-bold">Smart Watch for Educational Institutes & Universities <span class="text-yellow-500">(In Progress)</span></h3>
-        <p class="mt-2">A specially designed watch to ensure child safety. Monitors attendance, tracks location, and provides instant alerts to guardians and administrators.</p>
+      <div class="bg-white p-6 rounded-lg shadow card-hover transition relative overflow-hidden">
+        <h3 class="text-2xl font-bold mb-2">Smart Watch for Schools & Universities <span class="text-yellow-500 font-semibold">(In Progress)</span></h3>
+        <p>A watch ensuring child safety by tracking attendance, location, and sending instant alerts to guardians and administrators.</p>
       </div>
-      <!-- Project 3 -->
-      <div class="bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition transform">
-        <h3 class="text-2xl font-bold">Real Estate & E-Commerce Business <span class="text-green-500">(Active)</span></h3>
-        <p class="mt-2">Managing ventures in real estate and e-commerce. Creating seamless property solutions and online retail platforms that drive growth and enhance user experience.</p>
+      <div class="bg-white p-6 rounded-lg shadow card-hover transition relative overflow-hidden">
+        <h3 class="text-2xl font-bold mb-2">Real Estate & E-Commerce Business <span class="text-green-500 font-semibold">(Active)</span></h3>
+        <p>Managing ventures in real estate and e-commerce, creating seamless property solutions and online retail platforms for growth and user satisfaction.</p>
       </div>
     </div>
   </section>
 
   <!-- GitHub Stats Section -->
-  <section class="container mx-auto mt-12 px-4 text-center fade-in">
+  <section class="container mx-auto mt-16 px-6 text-center fade-in">
     <h2 class="text-4xl font-semibold mb-6">GitHub Stats</h2>
     <img src="https://github-readme-stats.vercel.app/api?username=your-github-username&show_icons=true&count_private=true&theme=radical" alt="GitHub Stats" class="mx-auto rounded-lg shadow-lg">
   </section>
 
+  <!-- Contact Section -->
+  <section id="contact" class="container mx-auto mt-16 px-6 mb-16 fade-in">
+    <h2 class="text-4xl font-semibold mb-6 text-center">Connect with Me</h2>
+    <div class="flex justify-center space-x-6">
+      <a href="https://linkedin.com/in/your-linkedin" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">LinkedIn</a>
+      <a href="https://your-portfolio.com" class="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition">Portfolio</a>
+      <a href="mailto:your-email@example.com" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition">Email</a>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="bg-gray-200 py-6 text-center mt-12 fade-in">
+  <footer class="bg-gray-200 py-6 text-center">
     <p>© 2025 J. Sameer Khan. All rights reserved.</p>
   </footer>
 
